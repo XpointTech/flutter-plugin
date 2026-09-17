@@ -1,0 +1,35 @@
+name: xpoint_sdk
+description: "A new Flutter project."
+version: 5.7.0
+homepage: https://xpoint.tech
+
+environment:
+  sdk: ^3.8.1
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  dartdoc: ^7.0.0
+
+publish_to: none
+
+# The following section is specific to Flutter packages.
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: tech.xpoint.flutter.plugin
+        pluginClass: XpointSdkPlugin
+      ios:
+        pluginClass: XpointSdkPlugin
+      macos:
+        pluginClass: XpointSdkPlugin
+      windows:
+        pluginClass: XpointSdkPluginCApi
