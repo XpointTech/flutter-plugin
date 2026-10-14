@@ -15,7 +15,7 @@ let package = Package(
         .package(name: "FlutterFramework", path: "../FlutterFramework")
     ],
     targets: [
-        .binaryTarget(name: "sdk", url: "https://downloads.xpoint.tech/5.7.0.13233/library/macos/sdk.xcframework.zip", checksum: "0c54c3ffee7c7d828ef8d83050c899769da21c036f49d1800241283ce28567cf"),
+        .binaryTarget(name: "sdk", url: "https://downloads.xpoint.tech/5.7.1.13558/library/macos/sdk.xcframework.zip", checksum: "9aa6b0c9e964f073e1ef2e388e9d473da92dea0e817270842255930881e3e237"),
         .target(
             name: "xpoint_sdk",
             dependencies: [

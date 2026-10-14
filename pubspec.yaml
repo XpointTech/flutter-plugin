@@ -1,11 +1,11 @@
 name: xpoint_sdk
 description: "A new Flutter project."
-version: 5.7.0
+version: 5.7.1
 homepage: https://xpoint.tech
 
 environment:
-  sdk: ^3.8.1
-  flutter: '>=3.3.0'
+  sdk: ^3.12.0
+  flutter: '>=3.44.0'
 
 dependencies:
   flutter:

@@ -17,7 +17,7 @@ Xpoint SDK Flutter plugin for iOS geolocation verification.
   s.source           = { :path => '.' }
   s.source_files = 'xpoint_sdk/Sources/xpoint_sdk/**/*.swift'
   s.dependency 'Flutter'
-  s.dependency 'XPointSDK', '5.7.0'
+  s.dependency 'XPointSDK', '5.7.1'
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.

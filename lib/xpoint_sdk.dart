@@ -712,6 +712,7 @@ class PeriodicChecker {
   ///            This is in addition to the [results] stream.
   ///
   /// Does nothing if the checker is already running.
+  /// A deny stops the checker, so calling [start] again resumes monitoring.
   ///
   /// ## Example
   /// ```dart
@@ -739,6 +740,9 @@ class PeriodicChecker {
         } catch (callbackError) {
           debugPrint('Error in periodic checker callback: $callbackError');
           tempController?.addError(callbackError);
+        }
+        if (result.status == CheckResponseStatus.denied) {
+          stop().catchError((Object error) => debugPrint('Failed to stop denied periodic checker: $error'));
         }
       });
 
@@ -788,28 +792,6 @@ class PeriodicChecker {
     if (stopError != null) {
       throw stopError;
     }
-  }
-
-  /// Triggers an immediate location check regardless of the scheduled interval
-  ///
-  /// Use this method to force a compliance check when a significant event occurs,
-  /// such as placing a bet or starting a wagering session.
-  ///
-  /// [reason] Optional reason for the triggered check (e.g., "bet", "wager_start").
-  ///          When null/empty, indicates an automation-triggered check.
-  ///
-  /// Returns `true` if the check was successfully triggered, `false` otherwise.
-  ///
-  /// ## Example
-  /// ```dart
-  /// // Trigger check when user places a bet
-  /// final success = await periodicChecker.triggerCheck(reason: "bet");
-  /// if (success) {
-  ///   print('Check triggered successfully');
-  /// }
-  /// ```
-  Future<bool> triggerCheck({String? reason}) async {
-    return XpointSdkPlatform.instance.triggerCheck(reason: reason);
   }
 }
 
@@ -1110,4 +1092,16 @@ class XpointSdk {
     }
   }
 
+  /// Sets the Google Cloud project number used for Play Integrity (Android only)
+  ///
+  /// The call is ignored on platforms other than Android.
+  ///
+  /// ## Example
+  /// ```dart
+  /// final sdk = XpointSdk();
+  /// await sdk.setGoogleCloudProjectNumber(123456789012);
+  /// ```
+  Future<void> setGoogleCloudProjectNumber(int number) {
+    return XpointSdkPlatform.instance.setGoogleCloudProjectNumber(number);
+  }
 }

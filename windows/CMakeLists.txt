@@ -12,14 +12,14 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 # versions of CMake.
 cmake_policy(VERSION 3.14...3.25)
 
-set(XPOINT_SDK_DLL "${CMAKE_CURRENT_BINARY_DIR}/xpoint-sdk-5.7.0.13233/sdk.dll")
-file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/xpoint-sdk-5.7.0.13233")
+set(XPOINT_SDK_DLL "${CMAKE_CURRENT_BINARY_DIR}/xpoint-sdk-5.7.1.13558/sdk.dll")
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/xpoint-sdk-5.7.1.13558")
 if(NOT EXISTS "${XPOINT_SDK_DLL}")
-  file(DOWNLOAD "https://downloads.xpoint.tech/5.7.0.13233/library/windows/sdk.dll" "${XPOINT_SDK_DLL}" EXPECTED_HASH SHA256=f0971a1a675fe50aa0666bfc5a55c1724dee77a26d6cfb574708ea9a6029e76c STATUS st)
+  file(DOWNLOAD "https://downloads.xpoint.tech/5.7.1.13558/library/windows/sdk.dll" "${XPOINT_SDK_DLL}" EXPECTED_HASH SHA256=9e0482f5d034a8a38735768858bde64da845f09ca6f0af46f1a0202ddf66b6d1 STATUS st)
   list(GET st 0 code)
   if(NOT code EQUAL 0)
     file(REMOVE "${XPOINT_SDK_DLL}")
-    message(FATAL_ERROR "xpoint_sdk: failed to download https://downloads.xpoint.tech/5.7.0.13233/library/windows/sdk.dll: ${st}")
+    message(FATAL_ERROR "xpoint_sdk: failed to download https://downloads.xpoint.tech/5.7.1.13558/library/windows/sdk.dll: ${st}")
   endif()
 endif()
 

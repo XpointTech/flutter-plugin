@@ -16,7 +16,7 @@ XPoint SDK Flutter plugin for macOS geolocation verification.
   s.source           = { :path => '.' }
   s.source_files = 'xpoint_sdk/Sources/xpoint_sdk/**/*.swift'
 
-  s.dependency 'XPointSDK', '5.7.0'
+  s.dependency 'XPointSDK', '5.7.1'
 
   # If your plugin requires a privacy manifest, for example if it collects user
   # data, update the PrivacyInfo.xcprivacy file to describe your plugin's

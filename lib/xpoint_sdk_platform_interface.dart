@@ -68,10 +68,6 @@ abstract class XpointSdkPlatform extends PlatformInterface {
     throw UnimplementedError('stop() has not been implemented.');
   }
 
-  Future<bool> triggerCheck({String? reason}) {
-    throw UnimplementedError('triggerCheck() has not been implemented.');
-  }
-
   Future<CheckResult> check(
     String clientKey,
     String userId,
@@ -107,5 +103,9 @@ abstract class XpointSdkPlatform extends PlatformInterface {
 
   Future<void> initializeLogSender() {
     throw UnimplementedError('initializeLogSender() has not been implemented.');
+  }
+
+  Future<void> setGoogleCloudProjectNumber(int number) {
+    throw UnimplementedError('setGoogleCloudProjectNumber() has not been implemented.');
   }
 }

@@ -55,6 +55,13 @@ class XpointSdkPlugin :
                 result.success(null)
             }
 
+            "setGoogleCloudProjectNumber" -> {
+                val number = call.arguments as? Number
+                    ?: return result.error("BAD_ARGS", "setGoogleCloudProjectNumber expects a number", null)
+                XpointSdk.getInstance().setGoogleCloudProjectNumber(number.toLong())
+                result.success(null)
+            }
+
             else -> result.notImplemented()
         }
     }

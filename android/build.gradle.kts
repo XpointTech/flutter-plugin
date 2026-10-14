@@ -69,7 +69,7 @@ kotlin {
 }
 
 dependencies {
-    implementation("tech.xpoint:sdk-android:5.7.0+13233")
+    implementation("tech.xpoint:sdk-android:5.7.1+13558")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")

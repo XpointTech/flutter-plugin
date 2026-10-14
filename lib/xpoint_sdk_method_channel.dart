@@ -161,6 +161,12 @@ class MethodChannelXpointSdk extends XpointSdkPlatform {
     await _once('initializeLogSender');
   }
 
+  @override
+  Future<void> setGoogleCloudProjectNumber(int number) async {
+    if (defaultTargetPlatform != TargetPlatform.android) return;
+    await methodChannel.invokeMethod<void>('setGoogleCloudProjectNumber', number);
+  }
+
   // --- jurisdiction --------------------------------------------------------
 
   @override
@@ -288,18 +294,11 @@ class MethodChannelXpointSdk extends XpointSdkPlatform {
   @override
   Future<void> stop(String clientKey, String userId, String? clientBrand) async {
     final id = _tag(clientKey, userId, clientBrand);
+    _streams.remove(id);
     try {
       await methodChannel.invokeMethod<void>('xp_rpc_call', json.encode({'id': id, 'type': 'halt'}));
-    } finally {
-      _streams.remove(id);
+    } catch (e) {
+      debugPrint('Bridge failure: method was not called: $e');
     }
-  }
-
-  @override
-  Future<bool> triggerCheck({String? reason}) async {
-    // The dispatcher needs session credentials; the facade does not carry them
-    // here, so this path is not served over the dispatcher transport.
-    debugPrint('triggerCheck is not supported on the dispatcher transport');
-    return false;
   }
 }
